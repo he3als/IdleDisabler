@@ -13,6 +13,9 @@ if %gotomenu%d=true goto menuf
 
 aefaddf
 s
+
+stopskjdfpoidsfpsdfokopkos
+
 ) ELSE (sfgs
 
 a
