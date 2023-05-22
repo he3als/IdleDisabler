@@ -24,15 +24,14 @@ if %gotomenu%==true goto menu
 if %autoenableidle%==true goto enableidle
 
 :disableidle
-powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 5d76a2ca-e8c0-402f-a133-2158492d58ad 1
-powercfg -setactive scheme_current
-IF %ERRORLEVEL%==1 (
-	echo Failed to disable idle^!
-	set idlestate=Disabling idle failed!
-	pause
+powercfg /setacvalueindex scheme_current 
+
+
+
 	goto menu
 ) ELSE (
-	set idlestate=Idle is currently disabled!
+
+
 	if %autominimisedisableidle%==true powershell -NonInteractive -NoProfile -window minimized -command ""
 	goto menu
 )
@@ -41,6 +40,7 @@ pause
 :enableidle
 powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 5d76a2ca-e8c0-402f-a133-2158492d58ad 0
 powercfg -setactive scheme_current
+#
 IF %ERRORLEVEL%==1 (
 	echo Failed to enable idle!
 	set idlestate=Enabling idle failed!
@@ -53,8 +53,9 @@ IF %ERRORLEVEL%==1 (
 )
 
 :menu
-cls
-echo.
+
+
+
 echo   Idle Power Plan Utility
 echo   -----------------------------------------
 echo   This script allows you to toggle between
