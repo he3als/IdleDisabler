@@ -18,7 +18,16 @@ stopskjdfpoidsfpsdfokopkos
 
 ) ELSE (sfgs
 
-a
+:disableidle
+powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 5d76a2ca-e8c0-402f-a133-2158492d58ad 1
+powercfg -setactive scheme_current
+if not %errorlevel%==0 (
+	echo Failed to disable idle^!
+	set idlestate=Disabling idle failed!
+	pause
+	goto menu
+) else (
+	set idlestate=Idle is currently disabled!
 	if %autominimisedisableidle%==true powershell -NonInteractive -NoProfile -window minimized -command ""
 	goto menu
 )
@@ -41,7 +50,7 @@ IF %ERRORLEVEL%==1 (
 	set idlestate=Enabling idle failed!
 	pause
 	goto menu
-) ELSE (
+) else (
 	set idlestate=Idle is currently enabled! 
 	if %autominimiseenableidle%==true powershell -NonInteractive -NoProfile -window minimized -command ""
 	goto menu
@@ -66,13 +75,13 @@ echo   3) Exit
 setlocal DisableDelayedExpansion
 pushd "%~dp0"
 for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo(0x08"') do (
-    set "\B=%%A"
+	set "\B=%%A"
 )
 
 CHOICE /N /C:123 /M ".%\B%  Please input your answer here ->"
-IF %ERRORLEVEL%==1 goto disableidle
-IF %ERRORLEVEL%==2 goto enableidle
-IF %ERRORLEVEL%==3 goto exiting
+if %errorlevel%==1 goto disableidle
+if %errorlevel%==2 goto enableidle
+if %errorlevel%==3 goto exiting
 goto menu
 
 :exiting
@@ -81,10 +90,10 @@ if %enableidleonexit%==false exit else goto exitingenablingidle
 :exitingenablingidle
 powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 5d76a2ca-e8c0-402f-a133-2158492d58ad 0
 powercfg -setactive scheme_current
-IF %ERRORLEVEL%==1 (
+if not %errorlevel%==0 (
 	echo Failed to enable idle!
 	pause
-goto menu
-) ELSE (
+	goto menu
+) else (
 	exit
 )
