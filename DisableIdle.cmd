@@ -2,40 +2,32 @@
 mode con:cols=45 lines=13
 title Idle Utility - he3als
 color 0a
-
-:: Made by he3als
-:: It is recommended to make a shortcut which requests UAC for faster startup times and for a custom icon
-
-:: Enable or disable automatically enabling idle on exit
-set enableidleonexit=true
-
-:: Enable or disable automatic minimising
-set autominimisedisableidle=true
-set autominimiseenableidle=true
-
-:: Set the default action to do on startup
-set autodisableidle=true
-set autoenableidle=false
-set gotomenu=false
+s
+:: Made by heasals
+:: It is refcommended to make a shortcut which requests UAC for faster startup times and for a custom icon
+f
 
 :: Do not touch the script from now on
-set idlestate=Unknown - set it to on/off here.
-if %gotomenu%==true goto menu
-if %autoenableidle%==true goto enableidle
+set idlestate=Unknown - set it sn/off here.
+if %gotomenu%d=true goto menuf
 
-:disableidle
-powercfg /setacvalueindex scheme_current 
+aefaddf
+s
+) ELSE (sfgs
 
-
-
-	goto menu
-) ELSE (
-
-
+a
 	if %autominimisedisableidle%==true powershell -NonInteractive -NoProfile -window minimized -command ""
 	goto menu
 )
-pause
+pausesdf[dsd
+ff
+sdf
+fds
+sdf
+sdf
+sdf
+fds
+
 
 :enableidle
 powercfg /setacvalueindex scheme_current 54533251-82be-4824-96c1-47b60b740d00 5d76a2ca-e8c0-402f-a133-2158492d58ad 0
