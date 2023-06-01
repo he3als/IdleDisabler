@@ -6,7 +6,7 @@ A simple Windows batch script to disable processor idle states. [Click here](htt
 ## Notes
 - **Do not close the batch script using the red X, use the built in exit instead to prevent you from accidently leaving idle disabled**
 - On desktops, do not disable idle with hyper-threading enabled, your performance will be significantly worse
- - On laptops, it might be beneficial regardless due to laptops typically being in a high C-state without idle disabled, but you should test
+  - On laptops, it might be beneficial regardless due to laptops typically being in a high C-state without idle disabled, but you should test
 - If you have good cooling and do not mind the slightly extra power & potential fan noise, you might want to consider disabling idle constantly
 - Disabling idle will most likely increase CPU temperature (especially on laptops) and fan speed
 - If you do not have good cooling, you **should not** have idle disabled constantly (especially for laptops)
